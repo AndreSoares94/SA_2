@@ -1,0 +1,15 @@
+p {
+    padding: 10px;
+    background-color: #ffaaff;
+  }
+
+#localmap {
+    margin-top:50px;
+    height: 400px; 
+    width: 1000px;
+    }
+
+#table {
+  width:75%;
+  margin-top:50px;
+}
