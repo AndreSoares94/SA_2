@@ -17,9 +17,22 @@ var row_header = table.insertRow(0);
 row_header.insertCell(0).outerHTML = "<th>Hora do Scan</th><th>Nº Incidentes</th></th>";
 
 async function getData(){
+    /* GET /api ou seja data da base de dados (tds os incidentes recolhidos) */
     const response = await fetch('/api');
     const data = await response.json();
+    
+    /* GET /incidents ou seja data atual (incidentes atuais) */
+    const response_inc = await fetch('/incidents');
+    const data_inc = await response_inc.json();
 
+    //colocar pontos dos incidentes atuais no mapa:
+    for (item of data_inc.incidents){
+        const marker = L.marker([item.geometry.coordinates[0][1], item.geometry.coordinates[0][0]]).addTo(mymap);
+        const txt = `Incidente desde: ${item.properties.from} até ${item.properties.to}`;
+        marker.bindPopup(txt);
+    }
+
+    //preencher tabela com data da base de dados:
     for(item of data){
         //console.log(item);
         var row = table.insertRow(1);
@@ -29,7 +42,8 @@ async function getData(){
         var cell_numberIncidents = row.insertCell(1);
         cell_date.innerHTML = date;
         cell_numberIncidents.innerHTML = numberOfIncidents;
-
+        /*
+        pontos no mapa:
         for(item of item.incidents){
 
             //console.log(item);
@@ -39,7 +53,8 @@ async function getData(){
         }
         //console.log(item.incidents[1].geometry.coordinates[0][0]);
 
-        /*var points = [[item.incidents[0].geometry.coordinates[0][1], item.incidents[0].geometry.coordinates[0][0]],
+        /* preencher caminho mapa
+        var points = [[item.incidents[0].geometry.coordinates[0][1], item.incidents[0].geometry.coordinates[0][0]],
                         [item.incidents[0].geometry.coordinates[1][1], item.incidents[0].geometry.coordinates[1][0]],
                         [item.incidents[0].geometry.coordinates[2][1], item.incidents[0].geometry.coordinates[2][0]],
                         [item.incidents[0].geometry.coordinates[3][1], item.incidents[0].geometry.coordinates[3][0]]];
