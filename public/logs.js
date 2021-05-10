@@ -1,5 +1,5 @@
 
-const mymap = L.map('localmap').setView([41.551057618862046, -8.422994320451291], 13);
+const mymap = L.map('localmap').setView([41.1670231326828, -8.611294399071793], 12);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',

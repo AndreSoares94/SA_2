@@ -59,7 +59,7 @@ app.post('/api', (request, response) => {
 
 app.get('/incidents', async (request, response) => {
 
-    const incidents_url = `https://api.tomtom.com/traffic/services/5/incidentDetails?key=3Nx9dow0fimxs9gM5UrALAJnu2r1RWon&bbox=-8.447704018864206,41.53338260648846,-8.396748291176934,41.56865075758634&fields=%7Bincidents%7Btype,geometry%7Btype,coordinates%7D,properties%7Bid,iconCategory,magnitudeOfDelay,events%7Bdescription,code,iconCategory%7D,startTime,endTime,from,to,length,delay,roadNumbers,aci%7BprobabilityOfOccurrence,numberOfReports,lastReportTime%7D%7D%7D%7D&language=en-GB`;
+    const incidents_url = `https://api.tomtom.com/traffic/services/5/incidentDetails?key=3Nx9dow0fimxs9gM5UrALAJnu2r1RWon&bbox=-8.58113,41.11297,-8.65942,41.17977&fields=%7Bincidents%7Btype,geometry%7Btype,coordinates%7D,properties%7Bid,iconCategory,magnitudeOfDelay,events%7Bdescription,code,iconCategory%7D,startTime,endTime,from,to,length,delay,roadNumbers,aci%7BprobabilityOfOccurrence,numberOfReports,lastReportTime%7D%7D%7D%7D&language=en-GB`;
     const incidents_response = await fetch(incidents_url);
     const incidents_data = await incidents_response.json();
     //console.log(incidents_data);
