@@ -16,6 +16,20 @@ var table = document.getElementById("myTable");
 var row_header = table.insertRow(0);
 row_header.insertCell(0).outerHTML = "<th>Hora do Scan</th><th>Nº Incidentes</th></th>";
 
+/* cores para os graficos */
+var color = Chart.helpers.color;
+window.chartColors = {
+    red: 'rgb(255, 99, 132)',
+    orange: 'rgb(255, 159, 64)',
+    yellow: 'rgb(255, 205, 86)',
+    green: 'rgb(75, 192, 192)',
+    blue: 'rgb(54, 162, 235)',
+    purple: 'rgb(153, 102, 255)',
+    grey: 'rgb(201, 203, 207)'
+};
+
+var data_number_incidents= [];
+
 async function getData(){
     /* GET /api ou seja data da base de dados (tds os incidentes recolhidos) */
     const response = await fetch('/api');
@@ -42,8 +56,47 @@ async function getData(){
         var cell_numberIncidents = row.insertCell(1);
         cell_date.innerHTML = date;
         cell_numberIncidents.innerHTML = numberOfIncidents;
+
+        data_number_incidents.push({
+            x: moment(date),
+            y: numberOfIncidents
+        })
+
+        /** definicao do grafico de temperatura **/
+        var scatter_data_number_incidents = {
+            datasets: [{
+               label: 'Incidentes',
+               borderColor: window.chartColors.blue,
+               backgroundColor: color(window.chartColors.black).alpha(0.9).rgbString(),
+               pointRadius: 4,
+               data: data_number_incidents
+            }]};
+
+        /** grafico de temperatura **/
+        var chart_incidents = document.getElementById('canvas_incidents').getContext('2d');
+        window.scatter_temp = new Chart(chart_incidents, {
+            type: 'scatter',
+            data: scatter_data_number_incidents,
+            options: {
+                title: {
+                    display: true,
+                    text: 'Gráfico do Numero de Incidentes'
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {callback: (value) => {return new Date(value).toLocaleString("en-US", {day: "numeric", month: "short", hour: "numeric"});}}
+                    }]
+                },
+                tooltips:{
+                    callbacks: {
+                        label: (tooltipItem, data) => {return new Date(tooltipItem.xLabel).toLocaleString("en-US", {day: "numeric", month: "short", hour: "numeric", minute: "numeric"}) + ' , '+tooltipItem.yLabel;}
+                    }
+                }
+            }
+        });
+
         /*
-        pontos no mapa:
+        //pontos no mapa:
         for(item of item.incidents){
 
             //console.log(item);

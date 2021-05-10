@@ -4,7 +4,7 @@
   "description": "This is the data selfie app",
   "main": "index.js",
   "scripts": {
-    "start" : "node backend.js",
+    "start": "node backend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "nedb": "^1.8.0",
+    "node-cron": "^3.0.0",
     "node-fetch": "^2.6.1"
   }
 }
