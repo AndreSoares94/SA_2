@@ -22,22 +22,42 @@
   <body>
     <h1>Incidentes Tráfico no Porto</h1>
     
-    <p>
-        Neste momento na zona em estudo existem <span id="numberIncidents"></span> incidentes!
-    </p>
+    <p>Neste momento na zona em estudo existem <span id="numberIncidents"></span> incidentes!</p>
+
+    <p>Total de Incidentes lidos: <span id="numberTotalIncidents"></span> incidentes!</p>
+    
+    <p>Total de Incidentes UNICOS lidos: <span id="numberUniqueTotalIncidents"></span> incidentes!</p>
+    
+    <p> Acidente com Maior Comprimento: Inicio em <span id="LengthMaxStart"></span>, Final em <span id="LengthMaxFinal"></span>,
+      com um atraso de <span id="LengthMaxDelay"></span> segundos, com inicio em <span id="LengthMaxSTime"></span>, com final em <span id="LengthMaxFTime"></span>,
+      e com um comprimento de <span id="LengthMax"></span> Metros</p>
+
+    <p>Acidente com Maior Delay: Inicio em <span id="DelayMaximoStart"></span>, Final em <span id="DelayMaximoFinal"></span>,
+      com um atraso de <span id="DelayMaximo"></span> segundos, com inicio em <span id="DelayMaximoSTime"></span>, com final em <span id="DelayMaximoFTime"></span>,
+      e com um comprimento de <span id="DelayMaximoLength"></span> Metros</p>
+
+    <p>Tempo Medio de Delay: <span id="DelayMedio"></span> segundos</p>
+
     <button id="myButton">Collect Data!</button>
     <script src="sketch.js"></script>
 
     <div id="localmap"></div>
 
-    <div id="table">
-      <table id="myTable" border="1px solid black"></table>
-    </div>
 
     <div style="width:75%">
       <canvas id="canvas_incidents" style="background-color: #e6e6e6;"></canvas>
+
+      <canvas id="pie_chart" width="80" height="40"> </canvas>
+      
+      <canvas id="pie_chart_Mag" width="80" height="40"> </canvas>
     </div>
 
+    <div id="table">
+      <p>Tabela de leituras:</p>
+      <button id="tableButton">Click Me to hide table</button>
+      <table id="myTable" border="1px solid black"></table>
+    </div>
+    
     <script src="logs.js"></script>
 
   </body>
