@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
@@ -20,42 +21,88 @@
     <title>Sistemas Autonomos</title>
   </head>
   <body>
-    <h1>Incidentes Tráfico no Porto</h1>
-    
-    <p>Neste momento na zona em estudo existem <span id="numberIncidents"></span> incidentes!</p>
+    <div style="text-align: center;">
+      <h1><b>Incidentes Tráfico no Porto</b></h1>
+      <hr style="border-top: solid; border-color: black;">
+    </div>
+    <div class="container">
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Número de incidentes:</b></h4></div>
+        <div class="panel-body">Neste momento na zona em estudo existem <span id="numberIncidents"></span> incidentes!</div>
+      </div>
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Total de Incidentes lidos:</b></h4></div>
+        <div class="panel-body"><span id="numberTotalIncidents"></span> incidentes!</div>
+      </div>
 
-    <p>Total de Incidentes lidos: <span id="numberTotalIncidents"></span> incidentes!</p>
-    
-    <p>Total de Incidentes UNICOS lidos: <span id="numberUniqueTotalIncidents"></span> incidentes!</p>
-    
-    <p> Acidente com Maior Comprimento: Inicio em <span id="LengthMaxStart"></span>, Final em <span id="LengthMaxFinal"></span>,
-      com um atraso de <span id="LengthMaxDelay"></span> segundos, com inicio em <span id="LengthMaxSTime"></span>, com final em <span id="LengthMaxFTime"></span>,
-      e com um comprimento de <span id="LengthMax"></span> Metros</p>
-
-    <p>Acidente com Maior Delay: Inicio em <span id="DelayMaximoStart"></span>, Final em <span id="DelayMaximoFinal"></span>,
-      com um atraso de <span id="DelayMaximo"></span> segundos, com inicio em <span id="DelayMaximoSTime"></span>, com final em <span id="DelayMaximoFTime"></span>,
-      e com um comprimento de <span id="DelayMaximoLength"></span> Metros</p>
-
-    <p>Tempo Medio de Delay: <span id="DelayMedio"></span> segundos</p>
-
-    <button id="myButton">Collect Data!</button>
-    <script src="sketch.js"></script>
-
-    <div id="localmap"></div>
-
-
-    <div style="width:75%">
-      <canvas id="canvas_incidents" style="background-color: #e6e6e6;"></canvas>
-
-      <canvas id="pie_chart" width="80" height="40"> </canvas>
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Total de Incidentes UNICOS lidos:</b></h4></div>
+        <div class="panel-body"><span id="numberUniqueTotalIncidents"></span> incidentes!</div>
+      </div>
       
-      <canvas id="pie_chart_Mag" width="80" height="40"> </canvas>
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Acidente com Maior Comprimento:</b></h4></div>
+        <div class="panel-body"><span id="LengthMaxStart"></span>, Final em <span id="LengthMaxFinal"></span>,
+          com um atraso de <span id="LengthMaxDelay"></span> segundos, com inicio em <span id="LengthMaxSTime"></span>, com final em <span id="LengthMaxFTime"></span>,
+          e com um comprimento de <span id="LengthMax"></span> Metros</div>
+      </div>
+
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Acidente com Maior Delay:</b></h4></div>
+        <div class="panel-body">Inicio em <span id="DelayMaximoStart"></span>, Final em <span id="DelayMaximoFinal"></span>,
+          com um atraso de <span id="DelayMaximo"></span> segundos, com inicio em <span id="DelayMaximoSTime"></span>, com final em <span id="DelayMaximoFTime"></span>,
+          e com um comprimento de <span id="DelayMaximoLength"></span> Metros</div>
+      </div>
+
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Tempo Medio de Delay:</b></h4></div>
+        <div class="panel-body"><span id="DelayMedio"></span> segundos</div>
+      </div>
     </div>
 
-    <div id="table">
-      <p>Tabela de leituras:</p>
-      <button id="tableButton">Click Me to hide table</button>
-      <table id="myTable" border="1px solid black"></table>
+    <div class="container">
+        <button type="button" class="btn btn-primary" id="myButton"><h4>Collect Data!</h4></button>
+        <script src="sketch.js"></script>
+    </div>
+
+    <div class="container">
+      <div style="border-style: solid; border-radius: 5px; border-width: 2px; border-color: black;" id="localmap"></div>
+    </div>
+
+    <hr style="border-top: solid; border-color: black;">
+
+    <div style="text-align: center;">
+      <h3><b>Gráficos</b></h3>
+    </div>
+
+    <div>
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8"><canvas id="canvas_incidents" style="background-color: #e6e6e6;"></canvas></div>
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-sm-6"><canvas id="pie_chart" width="80" height="40"> </canvas></div>
+        <div class="col-sm-6"><canvas id="pie_chart_Mag" width="80" height="40"> </canvas></div>
+      </div>
+    </div>
+
+    <hr style="border-top: solid; border-color: black;">
+
+    <div style="text-align: center;">
+      <h3><b>Tabela</b></h3>
+    </div>
+
+    <div class="container">
+      <div id="table" style="border-style: solid; border-width: 2px; width: 100%;">
+        <div style="text-align: center;">
+          <h4><b style="margin-top: 5px;">Tabela de leituras:</b></h4>
+        </div>
+        <button style="margin-bottom: 5px; margin-left: 42%;" type="button" class="btn btn-warning" id="tableButton"><h5 style="font-size: medium;">Click Me to hide table</h5></button>
+        <table id="myTable" style="width: 100%; border-top: solid; border-color: gray;"></table>
+      </div>
     </div>
     
     <script src="logs.js"></script>

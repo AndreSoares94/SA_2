@@ -5,6 +5,9 @@ p {
 
 #localmap {
     margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
     height: 400px; 
     width: 1000px;
     }
@@ -12,4 +15,11 @@ p {
 #table {
   width:75%;
   margin-top:50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#Title {
+  display: flex;
+  align-items: center;
 }
