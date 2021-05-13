@@ -30,39 +30,61 @@
         <div class="panel-heading"><h4><b>Número de incidentes:</b></h4></div>
         <div class="panel-body">Neste momento na zona em estudo existem <span id="numberIncidents"></span> incidentes!</div>
       </div>
-      <div class="panel panel-danger">
-        <div class="panel-heading"><h4><b>Total de Incidentes lidos:</b></h4></div>
-        <div class="panel-body"><span id="numberTotalIncidents"></span> incidentes!</div>
-      </div>
-
-      <div class="panel panel-danger">
-        <div class="panel-heading"><h4><b>Total de Incidentes UNICOS lidos:</b></h4></div>
-        <div class="panel-body"><span id="numberUniqueTotalIncidents"></span> incidentes!</div>
-      </div>
       
-      <div class="panel panel-danger">
-        <div class="panel-heading"><h4><b>Acidente com Maior Comprimento:</b></h4></div>
-        <div class="panel-body"><span id="LengthMaxStart"></span>, Final em <span id="LengthMaxFinal"></span>,
-          com um atraso de <span id="LengthMaxDelay"></span> segundos, com inicio em <span id="LengthMaxSTime"></span>, com final em <span id="LengthMaxFTime"></span>,
-          e com um comprimento de <span id="LengthMax"></span> Metros</div>
-      </div>
-
-      <div class="panel panel-danger">
-        <div class="panel-heading"><h4><b>Acidente com Maior Delay:</b></h4></div>
-        <div class="panel-body">Inicio em <span id="DelayMaximoStart"></span>, Final em <span id="DelayMaximoFinal"></span>,
-          com um atraso de <span id="DelayMaximo"></span> segundos, com inicio em <span id="DelayMaximoSTime"></span>, com final em <span id="DelayMaximoFTime"></span>,
-          e com um comprimento de <span id="DelayMaximoLength"></span> Metros</div>
-      </div>
-
-      <div class="panel panel-danger">
-        <div class="panel-heading"><h4><b>Tempo Medio de Delay:</b></h4></div>
-        <div class="panel-body"><span id="DelayMedio"></span> segundos</div>
-      </div>
+    <div class="container">
+      <button type="button" class="btn btn-primary" id="myButton"><h4>Collect Data!</h4></button>
+      <script src="sketch.js"></script>
+    </div>
+    <p></p>
+      
+    <div class="panel panel-danger">
+      <div class="panel-heading"><h4><b>Total de Leituras da API:</b></h4></div>
+      <div class="panel-body"><b><span id="numberOfReads"></span></b> Leituras</div>
     </div>
 
-    <div class="container">
-        <button type="button" class="btn btn-primary" id="myButton"><h4>Collect Data!</h4></button>
-        <script src="sketch.js"></script>
+    <div class="panel panel-danger">
+      <div class="panel-heading"><h4><b>Total de Incidentes lidos:</b></h4></div>
+      <div class="panel-body"><b><span id="numberTotalIncidents"></span></b> incidentes!</div>
+    </div>
+
+    <div class="panel panel-danger">
+      <div class="panel-heading"><h4><b>Total de Incidentes UNICOS lidos:</b></h4></div>
+      <div class="panel-body"><b><span id="numberUniqueTotalIncidents"></span></b> incidentes!</div>
+    </div>
+
+    <div class="panel panel-danger">
+      <div class="panel-heading"><h4><b>Data com mais incidentes detetados:</b></h4></div>
+      <div class="panel-body"><b><span id="DateMostIncidents"></span></b> com <b><span id="MostSingleIncidents"></span></b> incidentes!</div>
+    </div>
+      
+    <div class="panel panel-danger">
+      <div class="panel-heading"><h4><b>Acidente com Maior Comprimento:</b></h4></div>
+      <div class="panel-body">
+        <p>Inicio:          <span id="LengthMaxStart"></span></p>
+        <p>Fim:             <span id="LengthMaxFinal"></span></p>
+        <p>Atraso:          <span id="LengthMaxDelay"></span> segundos</p>
+        <p>Hora de inicio:  <span id="LengthMaxSTime"></span></p>
+        <p>Hora final:      <span id="LengthMaxFTime"></span></p>
+        <p>Comprimento:     <b><span id="LengthMax"></span></b> Metros
+      </div></p>
+    </div>
+
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Acidente com Maior Atraso:</b></h4></div>
+        <div class="panel-body">
+        <p>Inicio:          <span id="DelayMaximoStart"></span></p>
+        <p>Fim:             <span id="DelayMaximoFinal"></span></p>
+        <p>Atraso:          <b><span id="DelayMaximo"></span></b> segundos</p>
+        <p>Hora de inicio:  <span id="DelayMaximoSTime"></span></p>
+        <p>Hora final:      <span id="DelayMaximoFTime"></span></p>
+        <p>Comprimento:     <span id="DelayMaximoLength"></span> Metros</div></p>
+      </div>
+
+      
+      <div class="panel panel-danger">
+        <div class="panel-heading"><h4><b>Tempo Medio de Atraso:</b></h4></div>
+        <div class="panel-body"><span id="DelayMedio"></span> segundos</div>
+      </div>
     </div>
 
     <div class="container">

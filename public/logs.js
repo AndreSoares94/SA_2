@@ -52,11 +52,21 @@ window.chartColors = {
 var data_number_incidents = [];
 
 async function getData(){
+    // numero de leituras totais
+    var numLeituras = 0;
+    // numero de incidentes totais
     var numeroTotalIncidentes = 0;
+    // sets para guardar info sobre o acidente com maior delay e maior comprimento
     var DelayMaxAci = ['RuaFrom','RuaTo',0,'StartTime','EndTime',0];
     var LengthMaxAci = ['RuaFrom','RuaTo',0,'StartTime','EndTime',0];
+    // valor maximo de delay num incidente
     var DelayMaximo = 0;
+    // valor maximo de comprimento num incidente
     var LengthMax = 0;
+    // valor total de incidentes que nao sao roadWork
+    var notRoadWorks = 0;
+
+    var mostIncidents = ['Data',0];
 
     /* GET /api ou seja data da base de dados (tds os incidentes recolhidos) */
     const response = await fetch('/api');
@@ -75,7 +85,10 @@ async function getData(){
 
     //preencher tabela com data da base de dados:
     for(item of data){
-        //console.log(item);
+        
+        numLeituras++;
+
+        //inserir na tabela:
         var row = table.insertRow(1);
         var date = new Date(item.timestamp).toLocaleString("en-US");
         var numberOfIncidents = item.incidents.length;
@@ -83,6 +96,11 @@ async function getData(){
         var cell_numberIncidents = row.insertCell(1);
         cell_date.innerHTML = date;
         cell_numberIncidents.innerHTML = numberOfIncidents;
+
+        if(numberOfIncidents>mostIncidents[1]){
+            mostIncidents[0] = new Date(date).toLocaleString("en-GB", {day: "numeric", month: "short", hour: "numeric", minute: "numeric"})
+            mostIncidents[1] = numberOfIncidents;
+        }
 
         data_number_incidents.push({
             x: moment(date),
@@ -95,9 +113,17 @@ async function getData(){
         for(item of item.incidents){
 
             //iconCategoryData[item.properties.iconCategory]++;
-            UnicosMap.set(item.properties.id, { delay: item.properties.delay, iconCategory: item.properties.iconCategory,
-                                                magnitudeOfDelay: item.properties.magnitudeOfDelay, length: item.properties.length});
+            if(!UnicosMap.has(item.properties.id)){
+                UnicosMap.set(item.properties.id, { delay: item.properties.delay, iconCategory: item.properties.iconCategory,
+                    magnitudeOfDelay: item.properties.magnitudeOfDelay, length: item.properties.length});
+                
+                if(item.properties.iconCategory != 8) notRoadWorks++;
 
+                for(itemzinho of item.properties.events){
+                    iconCategoryData[itemzinho.iconCategory]++;
+                }
+            }
+            
                                                 
             if(item.properties.length > LengthMax){
                 LengthMax = item.properties.length;
@@ -138,11 +164,11 @@ async function getData(){
     var delayTotal = 0;
     for (let value of UnicosMap.values()) {
         delayTotal += value.delay;
-        iconCategoryData[value.iconCategory]++;
+        //iconCategoryData[value.iconCategory]++;
         magnitudeOfDelayData[value.magnitudeOfDelay]++;
     }
 
-    /** definicao do grafico de temperatura **/
+    /** definicao do grafico de incidents **/
     var scatter_data_number_incidents = {
         datasets: [{
            label: 'Incidentes',
@@ -205,6 +231,9 @@ async function getData(){
         },
         options: {
             responsive: true,
+            animation: {
+                animateScale : true
+            },
             title: {
                 display: true,
                 text: 'Causa dos incidentes'
@@ -233,6 +262,9 @@ async function getData(){
         },
         options: {
             responsive: true,
+            animation: {
+                animateScale : true
+            },
             title: {
                 display: true,
                 text: 'Magnitude do Atrasado'
@@ -243,30 +275,39 @@ async function getData(){
 
         
 
-    console.log(delayTotal);
-    /* media de delay em segundos excepto em road closures */
-    console.log("Numero acidentes Unicos:" + UnicosMap.size);
+    //console.log(delayTotal);
+    /* media de delay em segundos excepto em road closures
+    //console.log("Numero acidentes Unicos:" + UnicosMap.size);
     console.log("Delay medio:" + delayTotal/UnicosMap.size);
+    console.log("Delay medio A:" + delayTotal/notRoadWorks);
+    console.log("Total:" + UnicosMap.size);
+    console.log("Total A:" + notRoadWorks);
     console.log(data);
+    console.log(mostIncidents);*/
 
     document.getElementById('numberTotalIncidents').textContent = numeroTotalIncidentes;
     document.getElementById('numberUniqueTotalIncidents').textContent = UnicosMap.size;
-    document.getElementById('DelayMedio').textContent = delayTotal/UnicosMap.size;
+    document.getElementById('DelayMedio').textContent = (delayTotal/notRoadWorks).toFixed(0);
 
 
     document.getElementById('DelayMaximo').textContent = DelayMaximo;
     document.getElementById('DelayMaximoStart').textContent = DelayMaxAci[0];
     document.getElementById('DelayMaximoFinal').textContent = DelayMaxAci[1];
-    document.getElementById('DelayMaximoLength').textContent = DelayMaxAci[5];
+    document.getElementById('DelayMaximoLength').textContent = DelayMaxAci[5].toFixed(2);
     document.getElementById('DelayMaximoSTime').textContent = DelayMaxAci[3];
     document.getElementById('DelayMaximoFTime').textContent = DelayMaxAci[4];
 
-    document.getElementById('LengthMax').textContent = LengthMax;
+    document.getElementById('LengthMax').textContent = LengthMax.toFixed(2);
     document.getElementById('LengthMaxStart').textContent = LengthMaxAci[0];
     document.getElementById('LengthMaxFinal').textContent = LengthMaxAci[1];
     document.getElementById('LengthMaxDelay').textContent = LengthMaxAci[2];
     document.getElementById('LengthMaxSTime').textContent = LengthMaxAci[3];
     document.getElementById('LengthMaxFTime').textContent = LengthMaxAci[4];
+
+    document.getElementById('numberOfReads').textContent = numLeituras;
+    
+    document.getElementById('DateMostIncidents').textContent = mostIncidents[0];
+    document.getElementById('MostSingleIncidents').textContent = mostIncidents[1];
 }
 
 
