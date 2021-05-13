@@ -347,14 +347,14 @@ async function getData(){
         
 
     //console.log(delayTotal);
-    /* media de delay em segundos excepto em road closures 
+    /* media de delay em segundos excepto em road closures */
     //console.log("Numero acidentes Unicos:" + UnicosMap.size);
     console.log("Delay medio:" + delayTotal/UnicosMap.size);
     console.log("Delay medio A:" + delayTotal/notRoadWorks);
     console.log("Total:" + UnicosMap.size);
     console.log("Total A:" + notRoadWorks);
     console.log(data);
-    console.log(mostIncidents);*/
+    console.log(mostIncidents);
 
     document.getElementById('numberTotalIncidents').textContent = numeroTotalIncidentes;
     document.getElementById('numberUniqueTotalIncidents').textContent = UnicosMap.size;
