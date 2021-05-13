@@ -9,6 +9,24 @@
     width: 1000px;
     }
 
+#maptotal {
+    margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    height: 400px; 
+    width: 1000px;
+    }
+
+#heatMapTotal {
+    margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    height: 400px; 
+    width: 1000px;
+    }
+
 #table {
   width:75%;
   margin-top:50px;

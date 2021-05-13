@@ -39,56 +39,65 @@
       
     <div class="panel panel-danger">
       <div class="panel-heading"><h4><b>Total de Leituras da API:</b></h4></div>
-      <div class="panel-body"><b><span id="numberOfReads"></span></b> Leituras</div>
+      <div class="panel-body" style="font-size:18px;"><b><span id="numberOfReads" style="font-size:22px;"></span></b> Leituras</div>
     </div>
 
     <div class="panel panel-danger">
       <div class="panel-heading"><h4><b>Total de Incidentes lidos:</b></h4></div>
-      <div class="panel-body"><b><span id="numberTotalIncidents"></span></b> incidentes!</div>
+      <div class="panel-body" style="font-size:18px;"><b><span id="numberTotalIncidents" style="font-size:22px;"></span></b> incidentes!</div>
     </div>
 
     <div class="panel panel-danger">
       <div class="panel-heading"><h4><b>Total de Incidentes UNICOS lidos:</b></h4></div>
-      <div class="panel-body"><b><span id="numberUniqueTotalIncidents"></span></b> incidentes!</div>
+      <div class="panel-body" style="font-size:18px;"><b><span id="numberUniqueTotalIncidents" style="font-size:22px;"></span></b> incidentes!</div>
     </div>
 
     <div class="panel panel-danger">
       <div class="panel-heading"><h4><b>Data com mais incidentes detetados:</b></h4></div>
-      <div class="panel-body"><b><span id="DateMostIncidents"></span></b> com <b><span id="MostSingleIncidents"></span></b> incidentes!</div>
+      <div class="panel-body" style="font-size:18px;"><b><span id="DateMostIncidents" style="font-size:22px;"></span></b> com <b><span id="MostSingleIncidents" style="font-size:22px;"></span></b> incidentes!</div>
     </div>
       
     <div class="panel panel-danger">
       <div class="panel-heading"><h4><b>Acidente com Maior Comprimento:</b></h4></div>
       <div class="panel-body">
-        <p>Inicio:          <span id="LengthMaxStart"></span></p>
-        <p>Fim:             <span id="LengthMaxFinal"></span></p>
-        <p>Atraso:          <span id="LengthMaxDelay"></span> segundos</p>
-        <p>Hora de inicio:  <span id="LengthMaxSTime"></span></p>
-        <p>Hora final:      <span id="LengthMaxFTime"></span></p>
-        <p>Comprimento:     <b><span id="LengthMax"></span></b> Metros
+        <p style="font-size:18px;">Inicio:          <span id="LengthMaxStart"></span></p>
+        <p style="font-size:18px;">Fim:             <span id="LengthMaxFinal"></span></p>
+        <p style="font-size:18px;">Atraso:          <span id="LengthMaxDelay"></span> segundos</p>
+        <p style="font-size:18px;">Hora de inicio:  <span id="LengthMaxSTime"></span></p>
+        <p style="font-size:18px;">Hora final:      <span id="LengthMaxFTime"></span></p>
+        <p style="font-size:18px;">Comprimento:     <b><span id="LengthMax" style="font-size:22px;"></span></b> Metros
       </div></p>
     </div>
 
       <div class="panel panel-danger">
         <div class="panel-heading"><h4><b>Acidente com Maior Atraso:</b></h4></div>
         <div class="panel-body">
-        <p>Inicio:          <span id="DelayMaximoStart"></span></p>
-        <p>Fim:             <span id="DelayMaximoFinal"></span></p>
-        <p>Atraso:          <b><span id="DelayMaximo"></span></b> segundos</p>
-        <p>Hora de inicio:  <span id="DelayMaximoSTime"></span></p>
-        <p>Hora final:      <span id="DelayMaximoFTime"></span></p>
-        <p>Comprimento:     <span id="DelayMaximoLength"></span> Metros</div></p>
+        <p style="font-size:18px;">Inicio:          <span id="DelayMaximoStart"></span></p>
+        <p style="font-size:18px;">Fim:             <span id="DelayMaximoFinal"></span></p>
+        <p style="font-size:18px;">Atraso:          <b><span id="DelayMaximo" style="font-size:22px;"></span></b> segundos</p>
+        <p style="font-size:18px;">Hora de inicio:  <span id="DelayMaximoSTime"></span></p>
+        <p style="font-size:18px;">Hora final:      <span id="DelayMaximoFTime"></span></p>
+        <p style="font-size:18px;">Comprimento:     <span id="DelayMaximoLength"></span> Metros</div></p>
       </div>
 
       
       <div class="panel panel-danger">
         <div class="panel-heading"><h4><b>Tempo Medio de Atraso:</b></h4></div>
-        <div class="panel-body"><span id="DelayMedio"></span> segundos</div>
+        <div class="panel-body" style="font-size:18px;"><b><span id="DelayMedio" style="font-size:22px;"></span></b> segundos</div>
       </div>
     </div>
 
     <div class="container">
+      <h3><b>Mapa Atual: <span id="incidentesAtuais"></span> Incidentes</b></h3>
       <div style="border-style: solid; border-radius: 5px; border-width: 2px; border-color: black;" id="localmap"></div>
+    </div>
+    <div class="container">
+      <h3><b>Mapa Total</b></h3>
+      <div style="border-style: solid; border-radius: 5px; border-width: 2px; border-color: black;" id="maptotal"></div>
+    </div>
+    <div class="container">
+      <h3><b>Mapa de Calor</b></h3>
+      <div style="border-style: solid; border-radius: 5px; border-width: 2px; border-color: black;" id="heatMapTotal"></div>
     </div>
 
     <hr style="border-top: solid; border-color: black;">
