@@ -135,7 +135,9 @@ async function getData(){
         }
         else{
             const marker = L.marker([item.geometry.coordinates[0][1], item.geometry.coordinates[0][0]],{icon: jamIcon}).addTo(mymap);
-            const txt = `Incidente desde: ${item.properties.from} até ${item.properties.to}`;
+            const txt = `Incidente desde: ${item.properties.from} até ${item.properties.to}, 
+                        Magnitude Atraso: ${magnitudeOfDelaySet[item.properties.magnitudeOfDelay]},
+                        Causa Incidente: ${iconCategory[item.properties.iconCategory]}`;
             marker.bindPopup(txt);
         }
         
@@ -178,12 +180,14 @@ async function getData(){
                 UnicosMap.set(item.properties.id, { delay: item.properties.delay, iconCategory: item.properties.iconCategory,
                     magnitudeOfDelay: item.properties.magnitudeOfDelay, length: item.properties.length});
                 
+                /* numero de incidentes que nao sao de ruasfechadas */
                 if(item.properties.iconCategory != 8) notRoadWorks++;
-
+                
                 for(itemzinho of item.properties.events){
                     iconCategoryData[itemzinho.iconCategory]++;
                 }
 
+                /* Heat Map */
                 for(itemgeo of item.geometry.coordinates){
                     if(item.properties.iconCategory == 8) pointsRoadClosed.push([itemgeo[1],itemgeo[0]]);
                     else pointsOthers.push([itemgeo[1],itemgeo[0]]);
