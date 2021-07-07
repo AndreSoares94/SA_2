@@ -1,4 +1,4 @@
-# TP2_SA
+# Sistemas Autonomos - Sensorização Ambiente aplicada à Segurança Rodoviária.
 University Project for Autonomous Systems in NodeJS and Python - course of Computer Engineering at University of Minho.
 
 ## So, what is this?
